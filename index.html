@@ -32,7 +32,7 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
 // Firebase Console 建立專案後，將下方 firebaseConfig 的值換成自己的設定。
-const firebaseConfig={apiKey:"YOUR_API_KEY",authDomain:"YOUR_PROJECT.firebaseapp.com",projectId:"YOUR_PROJECT_ID",appId:"YOUR_APP_ID"};
+const firebaseConfig={apiKey:"AIzaSyCEPnqSfV4_VB1C6Eq7RMDDQeZ7wImGLBo",authDomain:"://firebaseapp.com",projectId:"reel-for-love",storageBucket:"reel-for-love.firebasestorage.app",messagingSenderId:"605023928275",appId:"1:605023928275:web:7e97dad16e349cb23b7926"}
 let cloudDb=null,cloudAuth=null,cloudUser=null,cloudUnsubscribe=null;
 const firebaseReady=Object.values(firebaseConfig).every(v=>v&&!String(v).includes('YOUR_'));
 if(firebaseReady){firebase.initializeApp(firebaseConfig);cloudAuth=firebase.auth();cloudDb=firebase.firestore();document.getElementById('cloudStatus').textContent='Firebase 已設定，請用共享帳號登入。';}
