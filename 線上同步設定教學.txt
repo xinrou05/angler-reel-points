@@ -1,0 +1,32 @@
+釣魚人集點網站｜線上同步設定
+
+此版本已加入 Firebase 雲端同步功能。你和男朋友使用同一組 Firebase Email/密碼登入後，點數和紀錄會同步。
+目前尚未替你公開上線，因為需要你自己的 Firebase/GitHub 帳號和專案設定。請依下列步驟完成一次設定。
+
+一、建立 Firebase 專案與共享登入帳號
+1. 用 Google 帳號開啟 https://console.firebase.google.com/ ，建立專案。
+2. 在專案設定中新增 Web App（</>），複製 Firebase config 的 apiKey、authDomain、projectId、appId。
+3. Authentication → Sign-in method → 開啟 Email/Password。
+4. Authentication → Users → Add user，建立你們共用的 Email 和密碼。兩人登入網站時都使用這組帳號。
+5. 複製該使用者的 UID。
+6. Firestore Database → Create database，先選 Production mode。
+7. Firestore → Rules，將本資料夾 firestore.rules 的內容貼上，並把 PASTE_SHARED_ACCOUNT_UID_HERE 替換成剛才的 UID，按 Publish。
+
+二、填入 Firebase 網站設定
+1. 用文字編輯器開啟 index.html。
+2. 搜尋 const firebaseConfig={...}，把 YOUR_API_KEY、YOUR_PROJECT.firebaseapp.com、YOUR_PROJECT_ID、YOUR_APP_ID 替換成 Firebase Web App config 的實際值。
+3. 儲存檔案。
+
+三、免費發布成網址（GitHub Pages）
+1. 登入 https://github.com/ ，建立一個新的 Repository（例如 angler-reel-points）。
+2. 將 index.html 上傳到 Repository 根目錄。
+3. Repository → Settings → Pages → Build and deployment，選 Deploy from a branch。
+4. Branch 選 main、資料夾選 /(root)，按 Save。
+5. 等待 GitHub Pages 發布，網址會顯示在 Pages 設定頁面，通常形式為 https://你的帳號.github.io/Repository名稱/ 。
+6. 把這個網址傳給男朋友，兩人用共享帳號登入即可同步。
+
+安全提醒
+- Firebase Web config 本身會放在網頁前端，這是正常的；真正的資料保護靠 Firestore Rules。
+- 請務必把 Rules 中的 UID 換成共享帳號的 UID，不要把資料庫設定成所有人都能讀寫。
+- 共享帳號密碼不要公開貼在網站或聊天群組。
+- 網站點數是共同資料；任何登入共享帳號的人都能新增或撤回紀錄。
